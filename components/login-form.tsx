@@ -12,19 +12,13 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
 
-  const router = useRouter();
-
-  const goToHome = () => {
-    router.push("/");
-  };
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-2">
             <a
-              href="#"
+              href="/"
               className="flex flex-col items-center gap-2 font-medium"
             >
               <div className="flex size-8 items-center justify-center rounded-md">
@@ -50,7 +44,7 @@ export function LoginForm({
                 required
               />
             </div>
-            <Button onClick={goToHome} type="submit" className="w-full">
+            <Button type="submit" className="w-full">
               Login
             </Button>
           </div>
