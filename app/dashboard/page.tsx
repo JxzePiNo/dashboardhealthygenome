@@ -277,7 +277,7 @@ export default function Page() {
                       <div className="flex items-center justify-between mb-1">
                         <Alert className="mt-6 border-blue-200 bg-blue-50">
                           <AlertDescription className="text-sm text-gray-700">
-                            <span className="font-semibold">Analisi risultato:</span> L'analisi del DNA mostra una predominanza di marcatori genetici dell'Italia settentrionale, con influenze dell'Europa Centrale e del bacino Mediterraneo.
+                            <span className="font-semibold">Analisi risultato:</span> L analisi del DNA mostra una predominanza di marcatori genetici dell Italia settentrionale, con influenze dell Europa Centrale e del bacino Mediterraneo.
                           </AlertDescription>
                         </Alert>
                       </div>
