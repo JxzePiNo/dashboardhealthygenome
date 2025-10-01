@@ -1,5 +1,5 @@
 import { GalleryVerticalEnd } from "lucide-react"
-
+import Link from "next/link";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,7 +16,7 @@ export function LoginForm({
       <form>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col items-center gap-2">
-            <a
+            <Link
               href="/"
               className="flex flex-col items-center gap-2 font-medium"
             >
@@ -24,13 +24,13 @@ export function LoginForm({
                 <GalleryVerticalEnd className="size-6" />
               </div>
               <span className="sr-only">healthygenome</span>
-            </a>
+            </Link>
             <h1 className="text-xl font-bold">Welcome to Healthygenome</h1>
             <div className="text-center text-sm">
               Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
+              <Link href="#" className="underline underline-offset-4">
                 Sign up
-              </a>
+              </Link> 
             </div>
           </div>
           <div className="flex flex-col gap-6">
@@ -75,8 +75,8 @@ export function LoginForm({
         </div>
       </form>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        By clicking continue, you agree to our <Link href="#">Terms of Service</Link> {" "}
+        and <Link href="#">Privacy Policy</Link> .
       </div>
     </div>
   )
