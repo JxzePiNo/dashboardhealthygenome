@@ -204,10 +204,6 @@ export default function Page() {
                       <p className="font-medium text-gray-900 text-sm">{patientData.sesso}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-600">Gruppo sanguigno</p>
-                      <p className="font-medium text-gray-900 text-sm">{patientData.gruppoSanguigno}</p>
-                    </div>
-                    <div>
                       <p className="text-xs text-gray-600">Data test genomico</p>
                       <p className="font-medium text-gray-900 text-sm">{patientData.dataTest}</p>
                     </div>
@@ -219,12 +215,44 @@ export default function Page() {
 
           <Card>
             <CardHeader className="bg-orange/100">
-              <CardTitle>Caratteristiche Fisiche</CardTitle>
-              <CardDescription>Analisi delle caratteristiche fisiche basata sul profilo genomico</CardDescription>
+              <CardTitle>Physical Characteristics</CardTitle>
+              <CardDescription>Analysis of physical characteristics based on genomic profiling</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className={`p-4 rounded-lg border-2 transition-all hover:shadow-md`}>
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-semibold text-gray-900">Geographical and ethnic origins</h3>
+                      </div>
+                      
+                    </div>
+                    <div className="gap-2 flex flex-row justify-left">
+                      <Badge variant="default" className="bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
+                        Italy 68%
+                      </Badge>
+                      <Badge variant="default" className="bg-green-200 text-green-600 font-sans h-8 rounded-xl">
+                        Central Europe 22%
+                      </Badge>
+                      <Badge variant="default" className="bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
+                        Mediterranean 8%
+                      </Badge>
+                      <Badge variant="default" className="bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
+                        Outher 2%
+                      </Badge>
+                    </div>
+                    <div className="mb-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <Alert className="mt-6 border-blue-200 bg-blue-50">
+                          <AlertDescription className="text-sm text-gray-700">
+                            <span className="font-semibold">Result analysis:</span> DNA analysis shows a predominance of Northern Italian genetic markers, with influences from Central Europe and the Mediterranean basin.
+                          </AlertDescription>
+                        </Alert>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div className={`p-4 rounded-lg border-2 transition-all hover:shadow-md`}>
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-gray-900">Origini geografiche ed etniche</h3>
@@ -255,28 +283,6 @@ export default function Page() {
                       </div>
                     </div>
                     
-                  </div>
-                  <div className={`p-4 rounded-lg border-2 transition-all hover:shadow-md`}>
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        
-                        <h3 className="font-semibold text-gray-900">Prova</h3>
-                      </div>
-                      <Badge variant="outline" className="capitalize">
-                        Rischio Alto
-                      </Badge>
-                    </div>
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm text-gray-600">Percentile popolazione</span>
-                        <span className="text-sm font-semibold"></span>
-                      </div>
-                      <div className="w-full bg-white/50 rounded-full h-2.5">
-                      </div>
-                    </div>
-                    <div className="text-xs text-gray-600 bg-white/50 p-2 rounded">
-                      <span className="font-medium">Varianti: </span>RS1333049
-                    </div>
                   </div>
                 
               </div>
