@@ -18,6 +18,8 @@ import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { User, AlertTriangle, CheckCircle2, AlertCircle, TrendingUp, TrendingDown, Minus } from "lucide-react"
 
+import '@fontsource/bricolage-grotesque'
+
 const patientData = {
   nome: "Iacopo Paolucci",
   dataNascita: "25 Luglio 2003",
@@ -157,8 +159,8 @@ export default function Page() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    healthygenome
+                  <BreadcrumbLink className="text-gray-500 font-medium" href="#">
+                    <span className="tetx-black font-bold">healthy</span>genome
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />

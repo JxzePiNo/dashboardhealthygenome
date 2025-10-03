@@ -21,7 +21,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
 import avatarImg from "@/app/avatar1.jpg"
 
 const data = {
@@ -59,10 +58,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <Link href="/" className="flex items-center gap-2">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <UserRound className="size-4" />
+                  
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">healthygenome</span>
+                  <span className="truncate font-medium text-gray-500"><span className="text-black font-bold">healthy</span>genome</span>
                   <span className="truncate text-xs">Iacopo Paolucci</span>
                 </div>
               </Link>
