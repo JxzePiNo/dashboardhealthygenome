@@ -1,4 +1,8 @@
+"use client";
+
 import { AppSidebar } from "@/components/app-sidebar"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,12 +17,53 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+import {
+  Apple,
+  Dna,
+  Info,
+  UserRound 
+} from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { User, AlertTriangle, CheckCircle2, AlertCircle, TrendingUp, TrendingDown, Minus } from "lucide-react"
+import { Bar, BarChart, CartesianGrid, Rectangle, XAxis, YAxis } from "recharts"
+
+
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart";
 
 import '@fontsource/bricolage-grotesque'
+
+
+
+export const description = "A bar chart with an active bar"
+
+const chartData = [
+  { title: "Risk of baldness", visitors: 65, fill: "var(--chart-1)"},
+  { title: "Hair density", visitors: 89, fill: "var(--chart-2)" },
+  { title: "Body hair growth", visitors: 32, fill: "var(--chart-3)" },
+]
+
+const chartConfig = {
+  visitors: {
+    label: "Percentage",
+  },
+  other: {
+    label: "Other",
+    color: "var(--chart-5)",
+  },
+} satisfies ChartConfig
+
 
 const patientData = {
   nome: "Iacopo Paolucci",
@@ -46,6 +91,31 @@ const allergie = [
   { nome: "Intolleranza al Glutine", presente: true, livello: "moderato", varianti: "HLA-DQA1 (rs2187668 C;T), HLA-DQB1 (rs7775228 C;T)" },
   { nome: "Allergia alle Arachidi", presente: false, livello: null, varianti: "STAT6 (rs1059513 A;A), FOXP3 (rs2232365 A;G)" }
 ]
+
+const data = {
+  user: {
+    name: "Iacopo Paolucci",
+    email: "paolucciacopo@gmail.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+  navMain: [
+    {
+      title: "Analisi",
+      url: "/dashboard",
+      icon: Dna,
+    },
+    {
+      title: "Dieta",
+      url: "/dieta",
+      icon: Apple,
+    },
+    {
+      title: "Scopri di più",
+      url: "#",
+      icon: Info,
+    },
+  ],
+}
 
 const trattiPersonali = [
   { 
@@ -145,6 +215,8 @@ const getTrendIcon = (trend: string) => {
 }
 
 export default function Page() {
+  const pathname = usePathname();
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -229,18 +301,18 @@ export default function Page() {
                       </div>
                       
                     </div>
-                    <div className="gap-2 flex flex-row justify-left">
-                      <Badge variant="default" className="bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="default" className="flex-1 min-w-[120px] bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
                         Italy 68%
                       </Badge>
-                      <Badge variant="default" className="bg-green-200 text-green-600 font-sans h-8 rounded-xl">
+                      <Badge variant="default" className="flex-1 min-w-[120px] bg-green-200 text-green-600 font-sans h-8 rounded-xl">
                         Central Europe 22%
                       </Badge>
-                      <Badge variant="default" className="bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
+                      <Badge variant="default" className="flex-1 min-w-[120px] bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
                         Mediterranean 8%
                       </Badge>
-                      <Badge variant="default" className="bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
-                        Outher 2%
+                      <Badge variant="default" className="flex-1 min-w-[120px] bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
+                        Other 2%
                       </Badge>
                     </div>
                     <div className="mb-3">
@@ -252,41 +324,47 @@ export default function Page() {
                         </Alert>
                       </div>
                     </div>
-                    
                   </div>
-                  <div className={`p-4 rounded-lg border-2 transition-all hover:shadow-md`}>
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-gray-900">Origini geografiche ed etniche</h3>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Hair and fur preparation</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ChartContainer config={chartConfig}>
+                        <BarChart
+                          accessibilityLayer
+                          data={chartData}
+                          layout="vertical"
+                          margin={{
+                            left: 0,
+                          }}
+                        >
+                          <YAxis
+                            dataKey="title"
+                            type="category"
+                            tickLine={false}
+                            tickMargin={2}
+                            axisLine={false}
+                            tickFormatter={(value) => value}
+                          />
+                          <XAxis dataKey="visitors" type="number" hide />
+                          <ChartTooltip
+                            cursor={false}
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Bar dataKey="visitors" layout="vertical" radius={5} />
+                        </BarChart>
+                      </ChartContainer>
+                    </CardContent>
+                    <CardFooter className="flex-col items-start gap-2 text-sm">
+                      <div className="flex gap-2 leading-none font-medium">
+                        Congrats, your gene is better than 92% of our clients<TrendingUp className="h-4 w-4" />
                       </div>
-                      
-                    </div>
-                    <div className="gap-2 flex flex-row justify-left">
-                      <Badge variant="default" className="bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
-                        Italia 68%
-                      </Badge>
-                      <Badge variant="default" className="bg-green-200 text-green-600 font-sans h-8 rounded-xl">
-                        Europa centrale 22%
-                      </Badge>
-                      <Badge variant="default" className="bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
-                        Mediterraneo 8%
-                      </Badge>
-                      <Badge variant="default" className="bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
-                        Altro 2%
-                      </Badge>
-                    </div>
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <Alert className="mt-6 border-blue-200 bg-blue-50">
-                          <AlertDescription className="text-sm text-gray-700">
-                            <span className="font-semibold">Analisi risultato:</span> L analisi del DNA mostra una predominanza di marcatori genetici dell Italia settentrionale, con influenze dell Europa Centrale e del bacino Mediterraneo.
-                          </AlertDescription>
-                        </Alert>
+                      <div className="text-muted-foreground leading-none">
+                            No preventive treatments are necessary
                       </div>
-                    </div>
-                    
-                  </div>
-                
+                    </CardFooter>
+                  </Card>
               </div>
             </CardContent>
           </Card>
@@ -421,5 +499,6 @@ export default function Page() {
         </div>
       </SidebarInset>
     </SidebarProvider>
+    
   )
 }
