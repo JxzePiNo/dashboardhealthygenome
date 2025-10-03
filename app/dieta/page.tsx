@@ -278,7 +278,6 @@ export default function DietPage() {
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2">
           <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
             <Separator
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
@@ -286,13 +285,13 @@ export default function DietPage() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    healthygenome
+                  <BreadcrumbLink href="/dashboard">
+                    <span className="text-black font-bold">healthy</span><span className="text-gray-500 font-medium">genome</span>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Piano Alimentare</BreadcrumbPage>
+                  <BreadcrumbPage><span className="text-gray-700 font-medium">Piano Alimentare</span></BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>

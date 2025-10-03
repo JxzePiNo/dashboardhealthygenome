@@ -231,12 +231,12 @@ export default function Page() {
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink className="text-gray-500 font-medium" href="#">
-                    <span className="tetx-black font-bold">healthy</span>genome
+                    <span className="text-black font-bold">healthy</span><span className="text-gray-500 font-medium">genome</span>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Analisi Genomica</BreadcrumbPage>
+                  <BreadcrumbPage><span className="text-gray-700 font-medium">Analisi Genomica</span></BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -286,7 +286,6 @@ export default function Page() {
             </CardContent>
           </Card>
 
-          <Card>
             <CardHeader className="bg-orange/100">
               <CardTitle>Physical Characteristics</CardTitle>
               <CardDescription>Analysis of physical characteristics based on genomic profiling</CardDescription>
@@ -366,10 +365,9 @@ export default function Page() {
                   </Card>
               </div>
             </CardContent>
-          </Card>
 
           {/* Sezione Patologie */}
-          <Card>
+          
             <CardHeader>
               <CardTitle>Predisposizione Genetica alle Patologie</CardTitle>
               <CardDescription>Analisi del rischio basata sul profilo genomico</CardDescription>
@@ -415,10 +413,10 @@ export default function Page() {
                 </AlertDescription>
               </Alert>
             </CardContent>
-          </Card>
+          
 
           {/* Sezione Allergie e Intolleranze */}
-          <Card>
+          
             <CardHeader>
               <CardTitle>Allergie e Intolleranze</CardTitle>
               <CardDescription>Sensibilità alimentari rilevate dal test genetico</CardDescription>
@@ -469,10 +467,10 @@ export default function Page() {
                 </AlertDescription>
               </Alert>
             </CardContent>
-          </Card>
+          
 
           {/* Sezione Tratti Personali */}
-          <Card>
+          
             <CardHeader>
               <CardTitle>Tratti Metabolici e Fisici Personali</CardTitle>
               <CardDescription>Caratteristiche individuali basate sul DNA</CardDescription>
@@ -494,7 +492,7 @@ export default function Page() {
                 ))}
               </div>
             </CardContent>
-          </Card>
+          
         </div>
       </SidebarInset>
     </SidebarProvider>

@@ -30,8 +30,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-
-
 export function NavUser({
   user,
 }: {
@@ -104,10 +102,12 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <a  href="/login">
+              <DropdownMenuItem>
               <LogOut />
               Log out
             </DropdownMenuItem>
+            </a>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
