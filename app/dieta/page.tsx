@@ -18,6 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { User } from "lucide-react"
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from "react"
+import { NavUser } from "@/components/nav-user"
 
 const dietData = {
   lunedi: {
@@ -271,32 +272,41 @@ const MealCard = ({ title, meal }: MealCardProps) => (
   </Card>
 )
 
+const userData = {user : {
+    name: "Iacopo Paolucci",
+    email: "paolucciacopo@gmail.com",
+    avatar: "/avatars/shadcn.jpg",
+  }};
+
 export default function DietPage() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2">
-          <div className="flex items-center gap-2 px-4">
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-[orientation=vertical]:h-4"
-            />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="/dashboard">
-                    <span className="text-black font-bold">healthy</span><span className="text-gray-500 font-medium">genome</span>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage><span className="text-gray-700 font-medium">Piano Alimentare</span></BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-        </header>
+        <header className="flex h-16 shrink-0 items-center gap-2 justify-between">
+                  <div className="flex items-center gap-2 px-4">
+                    <Separator
+                      orientation="vertical"
+                      className="mr-2 data-[orientation=vertical]:h-4"
+                    />
+                    <Breadcrumb>
+                      <BreadcrumbList>
+                        <BreadcrumbItem className="block">
+                          <BreadcrumbLink className="text-gray-500 font-medium" href="/dashboard">
+                            <span className="text-black font-bold">healthy</span><span className="text-gray-500 font-medium">genome</span>
+                          </BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbSeparator className="block" />
+                        <BreadcrumbItem>
+                          <BreadcrumbPage><span className="text-gray-700 font-medium">Piano Alimentare</span></BreadcrumbPage>
+                        </BreadcrumbItem>
+                      </BreadcrumbList>
+                    </Breadcrumb>
+                  </div>
+                  <div className="flex mr-4 md:hidden lg:hidden">
+                    <NavUser {...userData}></NavUser>
+                  </div>
+                </header>
         
         <div className="flex flex-1 flex-col gap-6 p-4 pt-0">
           {/* Card Nutrizionista */}
