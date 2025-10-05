@@ -54,11 +54,13 @@ export function NavUser({
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
+              
+              <div className="hidden flex-1 text-left text-sm leading-tight lg:grid md:grid">
                 <span className="truncate font-medium">{user.name}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
-              <ChevronsUpDown className="ml-auto size-4" />
+              
+              <ChevronsUpDown className="hidden ml-auto size-4 lg:grid md:grid" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent

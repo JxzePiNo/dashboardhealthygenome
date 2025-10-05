@@ -43,6 +43,7 @@ import {
 } from "@/components/ui/chart";
 
 import '@fontsource/bricolage-grotesque'
+import { NavUser } from "@/components/nav-user";
 
 
 
@@ -214,6 +215,12 @@ const getTrendIcon = (trend: string) => {
   }
 }
 
+const userData = {user : {
+    name: "Iacopo Paolucci",
+    email: "paolucciacopo@gmail.com",
+    avatar: "/avatars/shadcn.jpg",
+  }};
+
 export default function Page() {
   const pathname = usePathname();
 
@@ -221,7 +228,7 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2">
+        <header className="flex h-16 shrink-0 items-center gap-2 justify-between">
           <div className="flex items-center gap-2 px-4">
             <Separator
               orientation="vertical"
@@ -229,27 +236,33 @@ export default function Page() {
             />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink className="text-gray-500 font-medium" href="#">
+                <BreadcrumbItem className="block">
+                  <BreadcrumbLink className="text-gray-500 font-medium" href="/dashboard">
                     <span className="text-black font-bold">healthy</span><span className="text-gray-500 font-medium">genome</span>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbSeparator className="block" />
                 <BreadcrumbItem>
                   <BreadcrumbPage><span className="text-gray-700 font-medium">Analisi Genomica</span></BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
+          <div className="flex mr-4 md:hidden lg:hidden">
+            <NavUser {...userData}></NavUser>
+          </div>
         </header>
         
         <div className="flex flex-1 flex-col gap-6 p-4 pt-0">
           {/* Card Paziente */}
-          <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-0">
+          <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-0 py-0">
             <CardContent className="p-6">
               <div className="flex items-center gap-6">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                  <User className="w-12 h-12 text-white" />
+                <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                  <div className="w-full h-full flex flex-row justify-center items-center text-white">
+                    <h2 className="font-bold text-3xl">{patientData.nome.split(' ')[0].substring(0,1)}</h2>
+                    <h2 className="font-bold text-3xl">{patientData.nome.split(' ')[1].substring(0,1)}</h2>
+                  </div>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between mb-3">
