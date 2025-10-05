@@ -1,8 +1,8 @@
 "use client";
 
 import { AppSidebar } from "@/components/app-sidebar"
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import VerticalCarouselSections from "@/app/slider/page"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,39 +15,27 @@ import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar"
-
 import {
   Apple,
   Dna,
-  Info,
-  UserRound 
+  Info
 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { User, AlertTriangle, CheckCircle2, AlertCircle, TrendingUp, TrendingDown, Minus } from "lucide-react"
+import { User, AlertTriangle, CheckCircle2, AlertCircle, TrendingUp, TrendingDown, Minus, Sparkles, ShieldAlert } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, Rectangle, XAxis, YAxis } from "recharts"
-
-
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
-
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
+  ChartTooltipContent
 } from "@/components/ui/chart";
-
+import React, { useState, useRef, useEffect } from 'react';
 import '@fontsource/bricolage-grotesque'
 import { NavUser } from "@/components/nav-user";
 
-
-
-export const description = "A bar chart with an active bar"
 
 const chartData = [
   { title: "Risk of baldness", visitors: 65, fill: "var(--chart-1)"},
@@ -252,13 +240,13 @@ export default function Page() {
             <NavUser {...userData}></NavUser>
           </div>
         </header>
-        
         <div className="flex flex-1 flex-col gap-6 p-4 pt-0">
+          
           {/* Card Paziente */}
           <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-0 py-0">
             <CardContent className="p-6">
               <div className="flex items-center gap-6">
-                <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <div className="hidden w-24 h-24 rounded-3xl bg-gradient-to-br from-blue-400 to-indigo-500 items-center justify-center shadow-lg flex-shrink-0 lg:flex md:flex">
                   <div className="w-full h-full flex flex-row justify-center items-center text-white">
                     <h2 className="font-bold text-3xl">{patientData.nome.split(' ')[0].substring(0,1)}</h2>
                     <h2 className="font-bold text-3xl">{patientData.nome.split(' ')[1].substring(0,1)}</h2>
@@ -298,214 +286,7 @@ export default function Page() {
               </div>
             </CardContent>
           </Card>
-
-            <CardHeader className="bg-orange/100">
-              <CardTitle>Physical Characteristics</CardTitle>
-              <CardDescription>Analysis of physical characteristics based on genomic profiling</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className={`p-4 rounded-lg border-2 transition-all hover:shadow-md`}>
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-gray-900">Geographical and ethnic origins</h3>
-                      </div>
-                      
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge variant="default" className="flex-1 min-w-[120px] bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
-                        Italy 68%
-                      </Badge>
-                      <Badge variant="default" className="flex-1 min-w-[120px] bg-green-200 text-green-600 font-sans h-8 rounded-xl">
-                        Central Europe 22%
-                      </Badge>
-                      <Badge variant="default" className="flex-1 min-w-[120px] bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
-                        Mediterranean 8%
-                      </Badge>
-                      <Badge variant="default" className="flex-1 min-w-[120px] bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
-                        Other 2%
-                      </Badge>
-                    </div>
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <Alert className="mt-6 border-blue-200 bg-blue-50">
-                          <AlertDescription className="text-sm text-gray-700">
-                            <span className="font-semibold">Result analysis:</span> DNA analysis shows a predominance of Northern Italian genetic markers, with influences from Central Europe and the Mediterranean basin.
-                          </AlertDescription>
-                        </Alert>
-                      </div>
-                    </div>
-                  </div>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Hair and fur preparation</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ChartContainer config={chartConfig}>
-                        <BarChart
-                          accessibilityLayer
-                          data={chartData}
-                          layout="vertical"
-                          margin={{
-                            left: 0,
-                          }}
-                        >
-                          <YAxis
-                            dataKey="title"
-                            type="category"
-                            tickLine={false}
-                            tickMargin={2}
-                            axisLine={false}
-                            tickFormatter={(value) => value}
-                          />
-                          <XAxis dataKey="visitors" type="number" hide />
-                          <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent hideLabel />}
-                          />
-                          <Bar dataKey="visitors" layout="vertical" radius={5} />
-                        </BarChart>
-                      </ChartContainer>
-                    </CardContent>
-                    <CardFooter className="flex-col items-start gap-2 text-sm">
-                      <div className="flex gap-2 leading-none font-medium">
-                        Congrats, your gene is better than 92% of our clients<TrendingUp className="h-4 w-4" />
-                      </div>
-                      <div className="text-muted-foreground leading-none">
-                            No preventive treatments are necessary
-                      </div>
-                    </CardFooter>
-                  </Card>
-              </div>
-            </CardContent>
-
-          {/* Sezione Patologie */}
-          
-            <CardHeader>
-              <CardTitle>Predisposizione Genetica alle Patologie</CardTitle>
-              <CardDescription>Analisi del rischio basata sul profilo genomico</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4 md:grid-cols-2">
-                {patologie.map((patologia, index) => (
-                  <div 
-                    key={index}
-                    className={`p-4 rounded-lg border-2 transition-all hover:shadow-md ${getRiskColor(patologia.rischio)}`}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        {getRiskIcon(patologia.rischio)}
-                        <h3 className="font-semibold text-gray-900">{patologia.nome}</h3>
-                      </div>
-                      <Badge variant="outline" className="capitalize">
-                        Rischio {patologia.rischio}
-                      </Badge>
-                    </div>
-                    <div className="mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm text-gray-600">Percentile popolazione</span>
-                        <span className="text-sm font-semibold">{patologia.percentuale}%</span>
-                      </div>
-                      <div className="w-full bg-white/50 rounded-full h-2.5">
-                        <div
-                          className={`h-2.5 rounded-full transition-all ${getRiskBarColor(patologia.rischio)}`}
-                          style={{ width: `${patologia.percentuale}%` }}
-                        />
-                      </div>
-                    </div>
-                    <div className="text-xs text-gray-600 bg-white/50 p-2 rounded">
-                      <span className="font-medium">Varianti: </span>{patologia.varianti}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <Alert className="mt-6 border-blue-200 bg-blue-50">
-                <AlertDescription className="text-sm text-gray-700">
-                  <span className="font-semibold">Raccomandazioni Cliniche:</span> Monitoraggio regolare della pressione arteriosa, screening periodico per diabete tipo 2, mantenere stile di vita attivo e dieta equilibrata, considerare integrazione di calcio e vitamina D per osteoporosi.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          
-
-          {/* Sezione Allergie e Intolleranze */}
-          
-            <CardHeader>
-              <CardTitle>Allergie e Intolleranze</CardTitle>
-              <CardDescription>Sensibilità alimentari rilevate dal test genetico</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {allergie.map((allergia, index) => (
-                  <Alert 
-                    key={index} 
-                    className={allergia.presente ? "border-orange-200 bg-orange-50  w-full flex" : "border-green-200 bg-green-50 w-full flex"}
-                  >
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-3 flex-1">
-                        {allergia.presente ? (
-                          <AlertTriangle className="w-5 h-5 text-orange-600 flex-shrink-0" />
-                        ) : (
-                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <AlertDescription className="font-semibold text-gray-900 mb-1">
-                            {allergia.nome}
-                          </AlertDescription>
-                          <AlertDescription className="text-sm mb-2">
-                            {allergia.presente ? (
-                              <span className="text-orange-700">
-                                Presente - Livello {allergia.livello}
-                              </span>
-                            ) : (
-                              <span className="text-green-700">Non rilevata</span>
-                            )}
-                          </AlertDescription>
-                          <AlertDescription className="text-xs text-gray-600">
-                            {allergia.varianti}
-                          </AlertDescription>
-                        </div>
-                      </div>
-                      <Badge variant={allergia.presente ? "destructive" : "default"} className="ml-2">
-                        {allergia.presente ? "Positivo" : "Negativo"}
-                      </Badge>
-                    </div>
-                  </Alert>
-                ))}
-              </div>
-              
-              <Alert className="mt-6 border-blue-200 bg-blue-50">
-                <AlertDescription className="text-sm text-gray-700">
-                  <span className="font-semibold">Raccomandazioni Nutrizionali:</span> Limitare latticini o utilizzare alternative senza lattosio, monitorare reazione al glutine ma non eliminare completamente, nessuna restrizione per arachidi.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          
-
-          {/* Sezione Tratti Personali */}
-          
-            <CardHeader>
-              <CardTitle>Tratti Metabolici e Fisici Personali</CardTitle>
-              <CardDescription>Caratteristiche individuali basate sul DNA</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4 md:grid-cols-2">
-                {trattiPersonali.map((tratto, index) => (
-                  <div key={index} className="p-4 rounded-lg border bg-card hover:shadow-md transition-shadow">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        {getTrendIcon(tratto.trend)}
-                        <h3 className="font-semibold text-gray-900">{tratto.nome}</h3>
-                      </div>
-                      <Badge variant="secondary">{tratto.valore}</Badge>
-                    </div>
-                    <p className="text-sm text-gray-700 mb-2">{tratto.descrizione}</p>
-                    <p className="text-xs text-gray-500 bg-gray-50 p-2 rounded">{tratto.varianti}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          
+          <VerticalCarouselSections />
         </div>
       </SidebarInset>
     </SidebarProvider>

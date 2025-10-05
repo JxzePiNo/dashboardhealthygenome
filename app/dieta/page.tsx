@@ -250,7 +250,7 @@ const MealCard = ({ title, meal }: MealCardProps) => (
     <CardHeader>
       <CardTitle className="text-lg">{title}</CardTitle>
       <CardDescription>
-        <div className="flex gap-2 mt-2">
+        <div className="flex flex-wrap gap-2 mt-2">
           <Badge variant="secondary">{meal.calorie} kcal</Badge>
           <Badge variant="outline">P: {meal.proteine}g</Badge>
           <Badge variant="outline">C: {meal.carboidrati}g</Badge>
@@ -303,7 +303,7 @@ export default function DietPage() {
           <Card className="bg-gradient-to-r from-emerald-50 to-teal-50">
             <CardContent className="p-6">
               <div className="flex items-center gap-6">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 hidden lg:flex md:flex items-center justify-center shadow-lg">
                   <User className="w-12 h-12 text-white" />
                 </div>
                 <div className="flex-1">
@@ -353,10 +353,10 @@ export default function DietPage() {
                   return (
                     <TabsContent key={giorno} value={giorno} className="space-y-4 mt-4">
                       <Card className="bg-muted/50">
-                        <CardContent className="pt-6">
-                          <div className="flex justify-between items-center">
+                        <CardContent>
+                          <div className="flex flex-col justify-between items-start">
                             <h3 className="text-lg font-semibold capitalize">{giorno}</h3>
-                            <div className="flex gap-3">
+                            <div className="flex flex-wrap gap-2">
                               <Badge className="text-base">{totaleCalorie} kcal totali</Badge>
                               <Badge variant="outline">P: {totaleProteine}g</Badge>
                               <Badge variant="outline">C: {totaleCarboidrati}g</Badge>
