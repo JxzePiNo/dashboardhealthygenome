@@ -261,13 +261,13 @@ const VerticalCarouselSections = () => {
       {/* Scroll Container */}
       <div 
         ref={containerRef}
-        className="h-full overflow-y-scroll scrollbar-hide"
+        className="h-full w-full overflow-y-scroll scrollbar-hide"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {/* Section 1: Physical Characteristics */}
         <section 
           ref={el => { sectionsRef.current[0] = el; }}
-          className="min-h-screen flex items-start justify-center p-8 pt-8"
+          className="min-h-screen w-full flex items-start justify-center pt-8"
         >
           <div className={`w-full top-0 relative max-w-5xl transform transition-all duration-700 ${
             activeSection === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
@@ -364,7 +364,7 @@ const VerticalCarouselSections = () => {
         {/* Section 2: Patologie */}
         <section 
           ref={el => { sectionsRef.current[1] = el; }}
-          className="min-h-screen flex items-start justify-center p-8 pt-8"
+          className="min-h-screen flex items-start justify-center pt-8"
         >
           <div className={`w-full top-0 relative max-w-5xl transform transition-all duration-700 ${
             activeSection === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
@@ -420,7 +420,7 @@ const VerticalCarouselSections = () => {
         {/* Section 3: Allergie */}
         <section 
           ref={el => { sectionsRef.current[2] = el; }}
-          className="min-h-screen flex items-start justify-center p-8 pt-8"
+          className="min-h-screen flex items-start justify-center pt-8"
         >
           <div className={`w-full max-w-5xl transform transition-all duration-700 ${
             activeSection === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
@@ -481,7 +481,7 @@ const VerticalCarouselSections = () => {
         {/* Section 4: Tratti Personali */}
         <section 
           ref={el => { sectionsRef.current[3] = el; }}
-          className="min-h-screen flex items-start justify-center p-8 pt-8"
+          className="min-h-screen flex items-start justify-center pt-8"
         >
           <div className={`w-full max-w-5xl transform transition-all duration-700 ${
             activeSection === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
