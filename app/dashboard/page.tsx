@@ -475,7 +475,7 @@ export default function Page() {
               <CardTitle>Tratti Metabolici e Fisici Personali</CardTitle>
               <CardDescription>Caratteristiche individuali basate sul DNA</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="mb-20">
               <div className="grid gap-4 md:grid-cols-2">
                 {trattiPersonali.map((tratto, index) => (
                   <div key={index} className="p-4 rounded-lg border bg-card hover:shadow-md transition-shadow">

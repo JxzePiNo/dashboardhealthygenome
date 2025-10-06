@@ -337,7 +337,7 @@ export default function DietPage() {
           </Card>
 
           {/* Tabs Giorni della Settimana */}
-          <Card>
+          <Card className="mb-20">
             <CardHeader>
               <CardTitle>Piano Alimentare Settimanale</CardTitle>
               <CardDescription>Seleziona un giorno per visualizzare il menu completo</CardDescription>

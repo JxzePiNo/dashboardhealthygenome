@@ -272,92 +272,7 @@ const VerticalCarouselSections = () => {
           <div className={`w-full top-0 relative max-w-5xl transform transition-all duration-700 ${
             activeSection === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <CardHeader className="bg-orange/100">
-                <div className="flex flex-col gap-2 items-start">
-                <CardTitle>Physical Characteristics</CardTitle>
-                <div className="flex flex-row items-center">
-                    <Sparkles className="h-3 w-3 text-gray-500"></Sparkles>
-                    <h3 className="text-gray-500 font-medium text-xs">Analysis with <b>AI</b></h3>
-                </div>
-                </div>
-                <CardDescription>
-                DNA analysis shows a predominance of <b>Northern Italian</b> genetic markers, with influences from <b>Central Europe</b> and the <b>Mediterranean</b> basin.<br></br>
-                You also have <b>excellent hair density</b>, <b>low body hair count</b>, and a <b>high risk of baldness</b>.
-                </CardDescription>
-            </CardHeader>
-            <CardContent className='mt-2'>
-                <div className="grid gap-4 md:grid-cols-2">
-                <div className="p-4 rounded-lg transition-all shadow-sm hover:shadow-md">
-                    <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-gray-900">Geographical and ethnic origins</h3>
-                        </div>
-                        
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        <Badge variant="default" className="flex-1 min-w-[120px] bg-blue-200 text-blue-600 font-sans h-8 rounded-xl">
-                        Italy 68%
-                        </Badge>
-                        <Badge variant="default" className="flex-1 min-w-[120px] bg-green-200 text-green-600 font-sans h-8 rounded-xl">
-                        Central Europe 22%
-                        </Badge>
-                        <Badge variant="default" className="flex-1 min-w-[120px] bg-yellow-200 text-yellow-600 font-sans h-8 rounded-xl">
-                        Mediterranean 8%
-                        </Badge>
-                        <Badge variant="default" className="flex-1 min-w-[120px] bg-purple-200 text-purple-600 font-sans h-8 rounded-xl">
-                        Other 2%
-                        </Badge>
-                    </div>
-                    </div>
-                    
-                    <div className="p-4 rounded-lg transition-all shadow-sm hover:shadow-md">
-                    <CardHeader>
-                        <CardTitle>Hair and fur preparation</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ChartContainer config={chartConfig}>
-                        <BarChart
-                            accessibilityLayer
-                            data={chartData}
-                            layout="vertical"
-                            margin={{
-                            left: 0,
-                            }}
-                        >
-                            <YAxis
-                            dataKey="title"
-                            type="category"
-                            tickLine={false}
-                            tickMargin={2}
-                            axisLine={false}
-                            tickFormatter={(value) => value}
-                            />
-                            <XAxis dataKey="visitors" type="number" hide />
-                            <ChartTooltip
-                            cursor={false}
-                            content={<ChartTooltipContent hideLabel />}
-                            />
-                            <Bar dataKey="visitors" layout="vertical" radius={5} />
-                        </BarChart>
-                        </ChartContainer>
-                    </CardContent>
-                    </div>
-                </div>
-                <div className="py-6">
-                <div className="flex items-center justify-between mb-1">
-                <CardFooter className="flex-col items-start gap-2 text-sm">
-                    <div className="flex gap-2 leading-none font-medium">
-                    <div className="flex gap-2 leading-none font-medium">
-                        <ShieldAlert  className="h-4 w-4"/>Disclaimer
-                    </div>
-                    </div>
-                    <div className="text-muted-foreground leading-none">
-                    Each result takes into account only the genetic predisposition and not the phenotype (external factors such as the environment where you live or your diet)
-                    </div>
-                </CardFooter>
-                </div>
-            </div>
-            </CardContent>
+            
           </div>
         </section>
 
@@ -369,51 +284,7 @@ const VerticalCarouselSections = () => {
           <div className={`w-full top-0 relative max-w-5xl transform transition-all duration-700 ${
             activeSection === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <CardHeader>
-                <CardTitle>Predisposizione Genetica alle Patologie</CardTitle>
-                <CardDescription>Analisi del rischio basata sul profilo genomico</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="grid gap-4 md:grid-cols-2">
-                {patologie.map((patologia, index) => (
-                    <div 
-                    key={index}
-                    className={`p-4 rounded-lg border-2 transition-all hover:shadow-md ${getRiskColor(patologia.rischio)}`}
-                    >
-                    <div className="justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                        {getRiskIcon(patologia.rischio)}
-                        <h3 className="font-semibold text-gray-900">{patologia.nome}</h3>
-                        </div>
-                        <Badge variant="outline" className="capitalize">
-                        Rischio {patologia.rischio}
-                        </Badge>
-                    </div>
-                    <div className="mb-3">
-                        <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm text-gray-600">Percentile popolazione</span>
-                        <span className="text-sm font-semibold">{patologia.percentuale}%</span>
-                        </div>
-                        <div className="w-full bg-white/50 rounded-full h-2.5">
-                        <div
-                            className={`h-2.5 rounded-full transition-all ${getRiskBarColor(patologia.rischio)}`}
-                            style={{ width: `${patologia.percentuale}%` }}
-                        />
-                        </div>
-                    </div>
-                    <div className="text-xs text-gray-600 bg-white/50 p-2 rounded">
-                        <span className="font-medium">Varianti: </span>{patologia.varianti}
-                    </div>
-                    </div>
-                ))}
-                </div>
-                
-                <Alert className="mt-6 border-blue-200 bg-blue-50">
-                <AlertDescription className="text-sm text-gray-700">
-                    <span className="font-semibold">Raccomandazioni Cliniche:</span> Monitoraggio regolare della pressione arteriosa, screening periodico per diabete tipo 2, mantenere stile di vita attivo e dieta equilibrata, considerare integrazione di calcio e vitamina D per osteoporosi.
-                </AlertDescription>
-                </Alert>
-            </CardContent>
+            
           </div>
         </section>
 
@@ -425,56 +296,7 @@ const VerticalCarouselSections = () => {
           <div className={`w-full max-w-5xl transform transition-all duration-700 ${
             activeSection === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <CardHeader>
-              <CardTitle>Allergie e Intolleranze</CardTitle>
-              <CardDescription>Sensibilità alimentari rilevate dal test genetico</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {allergie.map((allergia, index) => (
-                  <Alert 
-                    key={index} 
-                    className={allergia.presente ? "border-orange-200 bg-orange-50  w-full flex" : "border-green-200 bg-green-50 w-full flex"}
-                  >
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-3 flex-1">
-                        {allergia.presente ? (
-                          <AlertTriangle className="w-5 h-5 text-orange-600 flex-shrink-0" />
-                        ) : (
-                          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                        )}
-                        <div className="flex-1 min-w-0">
-                          <AlertDescription className="font-semibold text-gray-900 mb-1">
-                            {allergia.nome}
-                          </AlertDescription>
-                          <AlertDescription className="text-sm mb-2">
-                            {allergia.presente ? (
-                              <span className="text-orange-700">
-                                Presente - Livello {allergia.livello}
-                              </span>
-                            ) : (
-                              <span className="text-green-700">Non rilevata</span>
-                            )}
-                          </AlertDescription>
-                          <AlertDescription className="text-xs text-gray-600">
-                            {allergia.varianti}
-                          </AlertDescription>
-                        </div>
-                      </div>
-                      <Badge variant={allergia.presente ? "destructive" : "default"} className="ml-2">
-                        {allergia.presente ? "Positivo" : "Negativo"}
-                      </Badge>
-                    </div>
-                  </Alert>
-                ))}
-              </div>
-              
-              <Alert className="mt-6 border-blue-200 bg-blue-50">
-                <AlertDescription className="text-sm text-gray-700">
-                  <span className="font-semibold">Raccomandazioni Nutrizionali:</span> Limitare latticini o utilizzare alternative senza lattosio, monitorare reazione al glutine ma non eliminare completamente, nessuna restrizione per arachidi.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
+            
           </div>
         </section>
 
@@ -486,27 +308,7 @@ const VerticalCarouselSections = () => {
           <div className={`w-full max-w-5xl transform transition-all duration-700 ${
             activeSection === 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <CardHeader>
-              <CardTitle>Tratti Metabolici e Fisici Personali</CardTitle>
-              <CardDescription>Caratteristiche individuali basate sul DNA</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-4 md:grid-cols-2">
-                {trattiPersonali.map((tratto, index) => (
-                  <div key={index} className="p-4 rounded-lg border bg-card hover:shadow-md transition-shadow">
-                    <div className="contents items-start justify-between mb-3 xl:flex">
-                      <div className="flex items-center gap-2">
-                        {getTrendIcon(tratto.trend)}
-                        <h3 className="font-semibold text-gray-900">{tratto.nome}</h3>
-                      </div>
-                      <Badge variant="secondary">{tratto.valore}</Badge>
-                    </div>
-                    <p className="text-sm text-gray-700 mb-2">{tratto.descrizione}</p>
-                    <p className="text-xs text-gray-500 bg-gray-50 p-2 rounded">{tratto.varianti}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
+            
           </div>
         </section>
       </div>
