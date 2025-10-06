@@ -94,7 +94,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       {/* Mobile Bottom Navigation - visibile solo su mobile */}
       <nav className="md:hidden fixed bottom-4 left-4 right-4 rounded-full z-50 bg-background border shadow-2xl">
-        <div className="rounded-full grid grid-cols-3 h-16">
+        <div className="rounded-full grid grid-cols-4 h-16">
           {data.navMain.map((item) => {
             const isActive = pathname === item.url;
             return (
