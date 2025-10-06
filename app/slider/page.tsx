@@ -285,7 +285,7 @@ const VerticalCarouselSections = () => {
                 You also have <b>excellent hair density</b>, <b>low body hair count</b>, and a <b>high risk of baldness</b>.
                 </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className='mt-2'>
                 <div className="grid gap-4 md:grid-cols-2">
                 <div className="p-4 rounded-lg transition-all shadow-sm hover:shadow-md">
                     <div className="flex items-start justify-between mb-3">
@@ -343,7 +343,7 @@ const VerticalCarouselSections = () => {
                     </CardContent>
                     </div>
                 </div>
-                <div className="py-6 px-6">
+                <div className="py-6">
                 <div className="flex items-center justify-between mb-1">
                 <CardFooter className="flex-col items-start gap-2 text-sm">
                     <div className="flex gap-2 leading-none font-medium">

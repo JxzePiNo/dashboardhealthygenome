@@ -14,6 +14,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+import pathImage from "@/public/avatar/shadcn.jpg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -50,9 +51,9 @@ export function NavUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+              <Avatar className="h-12 w-12 rounded-full xl:h-8 xl:w-8 md:h-8 md:w-8 xl:rounded-lg md:rounded-lg">
+                <AvatarImage src={pathImage.src} alt={user.name} />
+                <AvatarFallback className="rounded-lg text-primary font-bold bg-primary/20">IP</AvatarFallback>
               </Avatar>
               
               <div className="hidden flex-1 text-left text-sm leading-tight lg:grid md:grid">
@@ -72,7 +73,7 @@ export function NavUser({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarImage src={pathImage.src} alt={user.name} />
                   <AvatarFallback className="rounded-lg">IP</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">

@@ -55,13 +55,12 @@ const chartConfig = {
 
 
 const patientData = {
-  nome: "Iacopo Paolucci",
-  dataNascita: "25 Luglio 2003",
-  email: "iacopo.paolucci@email.it",
-  telefono: "+39 392 100 9978",
+  nome: "Mario Rossi",
+  dataNascita: "25 Luglio 1999",
+  email: "mario.rossi@email.it",
+  telefono: "+39 393 100 9158",
   dataTest: "16 Giugno 2025",
   sesso: "Maschile",
-  gruppoSanguigno: "A+"
 }
 
 const patologie = [
@@ -204,8 +203,8 @@ const getTrendIcon = (trend: string) => {
 }
 
 const userData = {user : {
-    name: "Iacopo Paolucci",
-    email: "paolucciacopo@gmail.com",
+    name: "Mario Rossi",
+    email: "mariorossi@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   }};
 

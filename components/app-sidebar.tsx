@@ -28,8 +28,8 @@ import { usePathname } from "next/navigation";
 
 const data = {
   user: {
-    name: "Iacopo Paolucci",
-    email: "paolucciacopo@gmail.com",
+    name: "Mario Rossi",
+    email: "mario.rossi@email.it",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
@@ -86,8 +86,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
 
       {/* Mobile Bottom Navigation - visibile solo su mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
-        <div className="grid grid-cols-3 h-16">
+      <nav className="md:hidden fixed bottom-4 left-4 right-4 rounded-full z-50 bg-background border shadow-2xl">
+        <div className="rounded-full grid grid-cols-3 h-16">
           {data.navMain.map((item) => {
             const isActive = pathname === item.url;
             return (
@@ -99,7 +99,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   transition-colors
                   ${
                     isActive
-                      ? "text-primary bg-primary/10"
+                      ? "rounded-full text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground"
                   }
                 `}
