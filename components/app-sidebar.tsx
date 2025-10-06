@@ -5,7 +5,8 @@ import {
   Apple,
   Dna,
   Info,
-  Sparkles 
+  Sparkles,
+  Dumbbell
 } from "lucide-react"
 import Link from "next/link";
 import { NavMain } from "@/components/nav-main"
@@ -42,6 +43,12 @@ const data = {
       title: "Dieta",
       url: "/dieta",
       icon: Apple,
+    },
+    {
+      title: "Fit",
+      url: "#",
+      icon: Dumbbell,
+      
     },
     {
       title: "Scopri di più",
